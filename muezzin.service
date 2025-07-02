@@ -1,0 +1,13 @@
+[Unit]
+Description=Muezzin Athan Player
+After=network-online.target default.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/play_athan.py /usr/local/share/athan/athan.mp3
+Restart=on-failure
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target
