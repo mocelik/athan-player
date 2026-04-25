@@ -115,6 +115,7 @@ if __name__ == "__main__":
     parser.add_argument("athan_sound_file")
     parser.add_argument("--latlon", help="The latitude and longitude of the location for athan times, in format lat,lon")
     parser.add_argument("--dryrun", help="Dry run mode to see if the prayer times are calculated correctly", action="store_true")
+    parser.add_argument("--volume", help="Set the volume of the athan sound", type=float, default=1.0)
     args = parser.parse_args()
 
 
@@ -132,7 +133,7 @@ if __name__ == "__main__":
         pygame.init()
         pygame.mixer.init()
         athan_sound = pygame.mixer.Sound(args.athan_sound_file)
-        athan_sound.set_volume(1.0)
+        athan_sound.set_volume(args.volume)
         prayer_times = RealTimePrayerTimes(coordinates, athan_sound)
 
     while True:
